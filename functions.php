@@ -39,6 +39,25 @@ if ( ! function_exists( 'blank_setup' ) ) :
 endif; // end function_exists blank_setup.
 add_action( 'after_setup_theme', 'blank_setup' );
 
+// Menu registration code from slushman/headless-theme
+add_action( 'after_setup_theme', 'headless_register_menus' );
+
+/**
+ * Registers Menus
+ *
+ * @hooked 		after_setup_theme
+ * @since 		1.0.0
+ */
+function headless_register_menus() {
+
+	register_nav_menus( array(
+		'main' 		=> esc_html__( 'Main', 'slushless' ),
+		'social' 	=> esc_html__( 'Social', 'slushless' ),
+		'footer' 	=> esc_html__( 'Footer', 'slushless' )
+	) );
+
+} // headless_register_menus()
+
 /**
  * Sets up theme defaults and registers the various WordPress features that
  * this theme supports.
